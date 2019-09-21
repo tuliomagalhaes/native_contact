@@ -1,6 +1,6 @@
 name: native_contact
 description: A Flutter plugin to call native contacts view on Android and iOS devices.
-version: 0.0.2
+version: 0.0.3
 author: Túlio Magalhães <tuliohdvp@gmail.com>
 homepage: https://github.com/Tulioh/native_contact
 
