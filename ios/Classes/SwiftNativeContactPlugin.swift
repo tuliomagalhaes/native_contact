@@ -35,7 +35,7 @@ public class SwiftNativeContactPlugin: NSObject, FlutterPlugin, CNContactViewCon
         contactViewController.allowsActions = true
         contactViewController.delegate = self
         contactViewController.allowsEditing = false
-        contactViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(cancelAddContactTapped))
+        contactViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(cancelAddContactTapped))
         
         self.rootViewController.present(contactNavigationController!, animated: true)
     }
@@ -52,7 +52,10 @@ public class SwiftNativeContactPlugin: NSObject, FlutterPlugin, CNContactViewCon
         contact.givenName = dictionary["name"] as? String ?? ""
         contact.organizationName = dictionary["company"] as? String ?? ""
         contact.jobTitle = dictionary["jobTitle"] as? String ?? ""
-        contact.urlAddresses.append(CNLabeledValue(label:CNLabelURLAddressHomePage, value:NSString(string:(dictionary["website"] as? String ?? ""))))
+        if dictionary["website"] as? String != nil {
+            contact.urlAddresses.append(CNLabeledValue(label:CNLabelURLAddressHomePage, value:NSString(string:(dictionary["website"] as? String ?? ""))))
+        }
+        
         if let avatarData = (dictionary["avatar"] as? FlutterStandardTypedData)?.data {
             contact.imageData = avatarData
         }

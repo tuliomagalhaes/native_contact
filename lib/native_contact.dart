@@ -13,14 +13,14 @@ class NativeContact {
 
 class ContactInfo {
 
-  String name;
-  String company;
-  String jobTitle;
-  String website;
-  List<PostalAddress> postalAddresses;
-  List<Item> emails;
-  List<Item> phones;
-  Uint8List avatar;
+  String? name;
+  String? company;
+  String? jobTitle;
+  String? website;
+  List<PostalAddress>? postalAddresses;
+  List<Item>? emails;
+  List<Item>? phones;
+  Uint8List? avatar;
 
   ContactInfo({
       this.name,
@@ -38,9 +38,9 @@ class ContactInfo {
       company = map["company"];
       jobTitle = map["jobTitle"];
       website = map["website"];
-      postalAddresses = (map["postalAddresses"] as Iterable) ?.map((m) => PostalAddress.fromMap(m));
-      emails = (map["emails"] as Iterable)?.map((m) => Item.fromMap(m));
-      phones = (map["phones"] as Iterable)?.map((m) => Item.fromMap(m));
+      postalAddresses = (map["postalAddresses"] as Iterable?) ?.map((m) => PostalAddress.fromMap(m)) as List<PostalAddress>?;
+      emails = (map["emails"] as Iterable?)?.map((m) => Item.fromMap(m)) as List<Item>?;
+      phones = (map["phones"] as Iterable?)?.map((m) => Item.fromMap(m)) as List<Item>?;
       avatar = map["avatar"];
   }
 
@@ -75,12 +75,12 @@ class ContactInfo {
 }
 
 class PostalAddress {
-    String label;
-    String street;
-    String city;
-    String postcode;
-    String region;
-    String country;
+    String? label;
+    String? street;
+    String? city;
+    String? postcode;
+    String? region;
+    String? country;
 
     PostalAddress({
         this.label,
@@ -113,8 +113,8 @@ class PostalAddress {
 
 class Item {
 
-    int label;
-    String value;
+    int? label;
+    String? value;
 
     Item(this.label, this.value);
 
