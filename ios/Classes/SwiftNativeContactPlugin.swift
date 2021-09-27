@@ -35,7 +35,7 @@ public class SwiftNativeContactPlugin: NSObject, FlutterPlugin, CNContactViewCon
         contactViewController.allowsActions = true
         contactViewController.delegate = self
         contactViewController.allowsEditing = false
-        contactViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(cancelAddContactTapped))
+        contactViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(cancelAddContactTapped))
         
         self.rootViewController.present(contactNavigationController!, animated: true)
     }
