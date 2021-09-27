@@ -52,7 +52,10 @@ public class SwiftNativeContactPlugin: NSObject, FlutterPlugin, CNContactViewCon
         contact.givenName = dictionary["name"] as? String ?? ""
         contact.organizationName = dictionary["company"] as? String ?? ""
         contact.jobTitle = dictionary["jobTitle"] as? String ?? ""
-        contact.urlAddresses.append(CNLabeledValue(label:CNLabelURLAddressHomePage, value:NSString(string:(dictionary["website"] as? String ?? ""))))
+        if dictionary["website"] as? String {
+            contact.urlAddresses.append(CNLabeledValue(label:CNLabelURLAddressHomePage, value:NSString(string:(dictionary["website"] as String))))
+        }
+        
         if let avatarData = (dictionary["avatar"] as? FlutterStandardTypedData)?.data {
             contact.imageData = avatarData
         }
